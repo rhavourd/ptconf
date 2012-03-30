@@ -1,0 +1,11 @@
+<div class="btn-group">
+  <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
+    <%= current_user.email %>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <%= link_to "Log out", session_path("current"), method: "delete", :confirm => "Do you really want to logout?" %>
+    </li>
+  </ul>
+</div>

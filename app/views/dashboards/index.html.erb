@@ -1,0 +1,9 @@
+<h1> <%= @current_user %> Dashboards#index</h1>
+<p>Find me in app/views/dashboards/index.html.erb</p>
+
+<ul>
+  <li><%= link_to courses_url %></li>
+  <li><%= link_to conference_dates_url %></li>
+</ul>
+
+<%= render :partial => 'courses/mycourses', :object => @courses %>

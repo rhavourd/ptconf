@@ -1,0 +1,7 @@
+<tr>
+  <td><%= period.formatted_start_time %></td>
+  <td id="period-<%= period_counter %>"><%= period.status %></td>
+  <td><%= button_to 'Toggle', xtoggle_meeting_path(conference_date_id: @conference_date, start_time: period.start_time,
+                    update: "period-#{period_counter}"),
+                    remote: true %> </td>
+</tr>

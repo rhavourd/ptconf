@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Date:</b>
+  <%= @conference_date.date %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @conference_date.user %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%= @conference_date.start_time %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%= @conference_date.end_time %>
+</p>
+
+<p>
+  <b>Duration:</b>
+  <%= @conference_date.duration %>
+</p>
+
+
+<%= link_to 'Edit', edit_conference_date_path(@conference_date) %> |
+<%= link_to 'Back', conference_dates_path %>

@@ -1,0 +1,1 @@
+curl -X POST "http://10.0.0.43:3000/meetings/2/xtoggle" --data "conference_date_id=2&amp;start_time=2000-01-01+08%3A00%3A00+UTC&amp;update=period-0" -H "Accept: application/javascript"

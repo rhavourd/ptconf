@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  conference_day: 
+  start_time: 2012-03-23 14:47:00
+  end_time: 2012-03-23 14:47:00
+  meet_with: MyString
+
+two:
+  conference_day: 
+  start_time: 2012-03-23 14:47:00
+  end_time: 2012-03-23 14:47:00
+  meet_with: MyString

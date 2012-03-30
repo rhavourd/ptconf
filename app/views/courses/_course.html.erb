@@ -1,0 +1,10 @@
+  <tr>
+    <td><%= course.code %></td>
+    <td><%= link_to course.description, course_path(course) %></td>
+    <td><%= course.first_day %></td>
+    <td><%= course.last_day %></td>
+    <td>
+      <%= link_to 'Edit', edit_course_path(course), :class => 'btn btn-mini' %>
+      <%= link_to content_tag("i", "", :class => "icon-remove"), course, confirm: 'Are you sure?', :method => :delete, :class => 'btn btn-mini btn-danger' %>
+    </td>
+  </tr>

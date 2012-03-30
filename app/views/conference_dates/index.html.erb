@@ -1,0 +1,39 @@
+<% content_for :page_help do %>
+  <h2>Need a little help?</h2>
+  We're here to help you schedule parent teacher conferences. Use the calendar to
+  add some days that you are available for a meeting.
+<% end %>
+
+<h1>Listing Conference Dates</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Duration</th>
+    <th></th>
+  </tr>
+
+<% @conference_dates.each do |conference_date| %>
+  <tr>
+    <td><%= conference_date.date %></td>
+    <td><%= conference_date.start_time %></td>
+    <td><%= conference_date.end_time %></td>
+    <td><%= conference_date.duration %></td>
+    <td>
+      <%= link_to 'Show', conference_date %>
+      <%= link_to 'Edit', edit_conference_date_path(conference_date) %>
+      <%= link_to 'Destroy', conference_date, confirm: 'Are you sure?', method: :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Conference Date', new_conference_date_path %>
+
+<br>
+
+<%= render :partial => "calendar", :object => @conference_dates %>

@@ -1,0 +1,13 @@
+<div id="calendar">
+    <%= calendar_for(calendar) do |t| %>
+        <%= t.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat') %>
+        <%= t.day(:day_method => :date) do |day, conferences| %>
+            <%= day.day %>
+            <ul>
+            <% conferences.each do |c| %>
+                <li class="conference"><%= c.reason %></li>
+            <% end %>
+            </ul>
+        <% end %>
+    <% end %>
+</div>
