@@ -2,14 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2.rc1'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3'
-
-# This gem overrides Time so there's no date component. From https://github.com/lailsonbm/time_of_day
-gem 'time_of_day'
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -24,7 +16,16 @@ group :assets do
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'awesome_print'
+end
+
+group :test do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'
@@ -43,6 +44,9 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+# This gem overrides Time so there's no date component. From https://github.com/lailsonbm/time_of_day
+gem 'time_of_day'
 
 gem "therubyracer", :require => 'v8'
 gem 'simple_form'
