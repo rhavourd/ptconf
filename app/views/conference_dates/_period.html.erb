@@ -1,7 +1,18 @@
-<tr>
+<tr class="meeting">
   <td><%= period.formatted_start_time %></td>
-  <td id="period-<%= period_counter %>"><%= period.status %></td>
-  <td><%= button_to 'Toggle', xtoggle_meeting_path(conference_date_id: @conference_date, start_time: period.start_time,
-                    update: "period-#{period_counter}"),
-                    remote: true %> </td>
+  <td id="period-<%= period_counter %>" class="<%= period.status.downcase %>"><%= period.status %></td>
+  <td><%= button_to 'Toggle',
+                    #{toggle_status_path(period)},
+                    conference_date_id: @conference_date,
+                    meeting_id: period.meeting_id,
+                    start_time: period.start_time,
+                    update: "period-#{period_counter}",
+                    remote: true %>
+  </td>
+  <td>
+    <%= button_to 'Personal',
+                  mark_personal_conference_date_meeting_path(@conference_date, period.meeting_id, start_time: period.start_time, update: "period-#{period_counter}"),
+                  update: "period-#{period_counter}", remote: true %>
+  </td>
+  <td><%= mark_personal_conference_date_meeting_path(@conference_date, period.meeting_id, start_time: period.start_time) %></td>
 </tr>

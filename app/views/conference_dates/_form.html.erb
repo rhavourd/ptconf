@@ -4,45 +4,44 @@
   eligible for meeting requests.
 <% end %>
 
-  <div class="row">
-    <%= simple_form_for(@conference_date) do |f| %>
-      <%= f.error_notification %>
+<div class="row">
+  <%= simple_form_for(@conference_date) do |f| %>
+    <%= f.error_notification %>
 
-      <div class="form-inputs span3">
-        <%= f.input :date, :as => :date_picker, :class => 'date_picker' %>
-        <%= f.input :reason %>
-        <%= f.input :start_time, :as => :time_picker %>
-        <%= f.input :end_time, :as => :time_picker, :options_for_javascript => {:startTime => "08.00am"} %>
-        <%= f.input :duration, :as => :range, :html_options => {:min => 5, :max => 60} %>
-      </div>
-  
-      <div class="form-actions">
-        <%= f.button :submit, :class => 'btn-primary' %>
-      </div>
-    <% end %>
-
-    <div class="span4">
-      <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr>
-            <th>Time</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-            <% if @conference_date.time_periods %>
-              <% i = 0 %>
-              <%= render :partial => 'period', :collection => @conference_date.time_periods.periods %>
-            <% else %>
-            <tr rowspan="20">
-              <td colspan="2">
-                <i>Let me know when you want to make yourself available
-                  by filling in the fields to the left.
-                </i>
-              </td>
-            </tr>
-            <% end %>
-        </tbody>
-      </table>
+    <div class="form-inputs span3">
+      <%= f.input :date, :as => :date_picker, :class => 'date_picker' %>
+      <%= f.input :reason %>
+      <%= f.input :start_time, :as => :time_picker %>
+      <%= f.input :end_time, :as => :time_picker, :options_for_javascript => {:startTime => "08.00am"} %>
+      <%= f.input :duration, :as => :range, :html_options => {:min => 5, :max => 60} %>
     </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, :class => 'btn-primary' %>
+    </div>
+  <% end %>
+
+  <div class="span4">
+    <table class="table table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @conference_date.time_periods.periods %>
+          <%= render :partial => 'period', :collection => @conference_date.time_periods.periods %>
+        <% else %>
+        <tr rowspan="20">
+          <td colspan="2">
+            <i>Let me know when you want to make yourself available
+              by filling in the fields to the left.
+            </i>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
+</div>

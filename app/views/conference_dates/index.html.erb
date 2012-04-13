@@ -4,15 +4,16 @@
   add some days that you are available for a meeting.
 <% end %>
 
-<h1>Listing Conference Dates</h1>
+<h1>Conference Dates</h1>
 
-<table>
+<table class="table table-striped table-bordered table-condensed">
   <tr>
     <th>Date</th>
     <th>Start time</th>
     <th>End time</th>
     <th>Duration</th>
-    <th></th>
+    <th>Reason</th>
+    <th>Actions</th>
   </tr>
 
 <% @conference_dates.each do |conference_date| %>
@@ -21,6 +22,7 @@
     <td><%= conference_date.start_time %></td>
     <td><%= conference_date.end_time %></td>
     <td><%= conference_date.duration %></td>
+    <td><%= conference_date.reason %></td>
     <td>
       <%= link_to 'Show', conference_date %>
       <%= link_to 'Edit', edit_conference_date_path(conference_date) %>

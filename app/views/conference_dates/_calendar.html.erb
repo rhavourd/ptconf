@@ -1,13 +1,13 @@
 <div id="calendar">
-    <%= calendar_for(calendar) do |t| %>
-        <%= t.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat') %>
-        <%= t.day(:day_method => :date) do |day, conferences| %>
-            <%= day.day %>
-            <ul>
-            <% conferences.each do |c| %>
-                <li class="conference"><%= c.reason %></li>
-            <% end %>
-            </ul>
-        <% end %>
+  <%= calendar_for(calendar, :month => 3) do |t| %>
+    <%= t.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat') %>
+    <%= t.day do |day, conferences| %>
+      <%= day.day %>
+      <ul>
+      <% conferences.each do |c| %>
+        <li class="conference"><%= c.reason %></li>
+      <% end %>
+      </ul>
     <% end %>
+  <% end %>
 </div>

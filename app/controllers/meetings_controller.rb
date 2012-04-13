@@ -1,11 +1,35 @@
 class MeetingsController < ApplicationController
+  before_filter :load_conference_date
+
   def index
+  end
+
+  def mark_personal
+    logger.debug "********************************* In mark_personal!"
+    logger.debug "@c=#{@conference_date.to_yaml}"
+
+    start_time = Time.parse(params[:start_time]).time_of_day!
+    @meeting = @conference_date.meetings.between_start_end_time(start_time).first
+    if @meeting.nil?
+      @meeting = @conference_date.meetings.build
+      @meeting.start_time = start_time
+      @meeting.end_time = start_time + (@conference_date.duration * 60)
+    end
+
+    @meeting.mark_personal
+    @meeting.save
+    logger.debug "@meeting: class #{@meeting.class} #{@meeting.to_yaml}"
+    logger.debug "update #{params[:update]}"
+
+    respond_to do |format|
+      format.js
+    end
+
   end
 
   def xtoggle
     logger.debug "********************************* In meetings!"
     logger.debug "User=#{current_user}"
-    @conference_date = current_user.conference_dates.find(params[:conference_date_id])
     logger.debug "@c=#{@conference_date.to_yaml}"
 
     start_time = Time.parse(params[:start_time]).time_of_day!
@@ -18,7 +42,6 @@ class MeetingsController < ApplicationController
   end
 
   def create
-    @conference_date = current_user.conference_dates.find(params[:conference_date_id])
     puts params
 
     respond_to do |format|
@@ -38,6 +61,8 @@ class MeetingsController < ApplicationController
   def update
   end
 
-  def toggle
+  private
+  def load_conference_date
+    @conference_date = current_user.conference_dates.find(params[:conference_date_id])
   end
 end

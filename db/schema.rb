@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323184700) do
+ActiveRecord::Schema.define(:version => 20120413170859) do
 
   create_table "conference_dates", :force => true do |t|
     t.date     "date"
@@ -41,13 +41,14 @@ ActiveRecord::Schema.define(:version => 20120323184700) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "periods", :force => true do |t|
+  create_table "meetings", :force => true do |t|
     t.integer  "conference_date_id"
     t.time     "start_time"
     t.time     "end_time"
     t.string   "meet_with"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.string   "status",             :limit => 9
   end
 
   add_index "meetings", ["conference_date_id"], :name => "index_meetings_on_conference_date_id"

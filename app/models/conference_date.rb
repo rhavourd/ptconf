@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: conference_dates
+#
+#  id         :integer         not null, primary key
+#  date       :date
+#  user_id    :integer
+#  start_time :time
+#  end_time   :time
+#  duration   :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#  reason     :string(255)
+#
+
 class ConferenceDate < ActiveRecord::Base
   belongs_to :user
   has_many :meetings, :dependent => :destroy

@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: courses
+#
+#  id          :integer         not null, primary key
+#  code        :string(255)
+#  description :string(255)
+#  first_day   :date
+#  last_day    :date
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#  user_id     :integer
+#
+
 class Course < ActiveRecord::Base
   attr_accessible :code, :description, :first_day, :last_day
   belongs_to :user

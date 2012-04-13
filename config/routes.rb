@@ -1,12 +1,15 @@
 Ptconf::Application.routes.draw do
 
-  resources :meetings do
-    member do
-      post 'xtoggle'
+  resources :conference_dates do
+    resources :meetings do
+      member do
+        post 'mark_personal'
+        post 'mark_available'
+        post 'xtoggle'
+      end
     end
   end
 
-  resources :conference_dates
 
   get 'dashboard' => "dashboards#index"
 

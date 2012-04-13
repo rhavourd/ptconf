@@ -10,6 +10,8 @@ class TimePeriods
   end
 
   def initialize_periods
+    return unless @conference_date.start_time && @conference_date.duration
+
     periods = []
     time = @conference_date.start_time
     begin
@@ -47,11 +49,33 @@ class Period
     @status = status
   end
 
+  def meeting_id
+    @meeting_id || 0
+  end
+
   def formatted_start_time
     formatted_time @start_time
   end
 
   def formatted_time(time)
     time.strftime("%I:%M %p %Z")
+  end
+
+  def is_available?
+    @status.casecmp("available") == 0
+  end
+
+  def is_personal?
+    @status.casecmp("personal") == 0
+  end
+
+  def mark_available
+    puts "self=#{self.inspect}"
+    @status = "available"  unless self.is_available?
+  end
+
+  def mark_personal
+    puts "self.is_personal? #{self.is_personal?}  self=#{self.inspect}"
+    @status = "personal"  unless self.is_personal?
   end
 end
