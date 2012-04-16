@@ -15,9 +15,19 @@
 class Meeting < ActiveRecord::Base
   belongs_to :conference_date
 
-  scope :between_start_end_time, lambda {|time| where("start_time <= ? AND end_time >= ?", time, time) }
+  scope :between_start_end_time, lambda {|time| where("start_time <= ? AND end_time >= ?", time.time_of_day!, time.time_of_day!) }
 
   validates_presence_of :conference_date_id, :start_time, :end_time, :status
+
+  def start_time=(time)
+    time.time_of_day!
+    write_attribute(:start_time, time.to_s)
+  end
+
+  def end_time=(time)
+    time.time_of_day!
+    write_attribute(:end_time, time.to_s)
+  end
 
   def is_available?
     status.nil? || (status.casecmp("Available") == 0)

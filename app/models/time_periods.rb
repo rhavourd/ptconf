@@ -13,9 +13,12 @@ class TimePeriods
     return unless @conference_date.start_time && @conference_date.duration
 
     periods = []
-    time = @conference_date.start_time
+    time = @conference_date.start_time.time_of_day!
     begin
-      periods << Period.new(time, time + @conference_date.duration * 60, @default_status)
+      period = Period.new(time, time + @conference_date.duration * 60, @default_status)
+      meeting = @conference_date.meetings.between_start_end_time(period.start_time).first
+      period.meeting_id = meeting.id  if meeting.present?
+      periods << period
     end while (time += @conference_date.duration * 60) <= @conference_date.end_time
     periods
   end
@@ -44,7 +47,9 @@ class Period
 
   def initialize(start_time, end_time, status)
     @start_time = start_time
+    @start_time.time_of_day!
     @end_time = end_time
+    @end_time.time_of_day!
     @duration = ((@end_time - @start_time).to_int / 60).to_int
     @status = status
   end

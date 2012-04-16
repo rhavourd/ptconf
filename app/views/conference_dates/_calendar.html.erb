@@ -1,11 +1,12 @@
 <div id="calendar">
-  <%= calendar_for(calendar, :month => 3) do |t| %>
+  <%= calendar_for(calendar) do |t| %>
+    <%= content_tag(:caption, calendar.first.date.strftime("%B"), :id => 'month' ) %>
     <%= t.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat') %>
     <%= t.day do |day, conferences| %>
       <%= day.day %>
       <ul>
       <% conferences.each do |c| %>
-        <li class="conference"><%= c.reason %></li>
+        <li class="conference"><%= link_to c.reason, edit_conference_date_path(c) %></li>
       <% end %>
       </ul>
     <% end %>
