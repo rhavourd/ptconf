@@ -1,0 +1,3 @@
+<%= logger.debug "in js... update #{params[:update]} with #{@meeting.status}" %>
+$('#<%= raw(params[:update]) %>').html("<%= @meeting.status.titleize %>");
+$('#<%= raw(params[:update]) %>').effect("highlight", {}, 1500);
