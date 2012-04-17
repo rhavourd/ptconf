@@ -49,10 +49,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="time_periods.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="time_periods.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/time_periods.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="13" selection-start="1220" selection-end="1220" vertical-scroll-proportion="0.30612245">
+            <state line="51" column="13" selection-start="1220" selection-end="1220" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="3" selection-start="452" selection-end="452" vertical-scroll-proportion="0.25408164">
               <folding />
             </state>
           </provider>
@@ -118,7 +127,6 @@
       <list>
         <option value="$PROJECT_DIR$/config/database.yml" />
         <option value="$PROJECT_DIR$/app/views/conference_dates/index.html.erb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/meetings.css.scss" />
         <option value="$PROJECT_DIR$/app/views/conference_dates/_form.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
@@ -132,6 +140,7 @@
         <option value="$PROJECT_DIR$/app/views/conference_dates/_period.html.erb" />
         <option value="$PROJECT_DIR$/app/models/meeting.rb" />
         <option value="$PROJECT_DIR$/app/models/time_periods.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
       </list>
     </option>
   </component>
@@ -872,13 +881,6 @@
         <state line="28" column="46" selection-start="677" selection-end="714" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="101" selection-start="966" selection-end="1006" vertical-scroll-proportion="0.7397959">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="27" selection-start="744" selection-end="744" vertical-scroll-proportion="0.3989796">
@@ -944,7 +946,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/time_periods.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="13" selection-start="1220" selection-end="1220" vertical-scroll-proportion="0.30612245">
+        <state line="51" column="13" selection-start="1220" selection-end="1220" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="3" selection-start="452" selection-end="452" vertical-scroll-proportion="0.25408164">
           <folding />
         </state>
       </provider>
