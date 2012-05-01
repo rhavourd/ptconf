@@ -1,5 +1,9 @@
 Ptconf::Application.routes.draw do
 
+  resources :parents
+
+  resources :students
+
   resources :conference_dates do
     resources :meetings do
       member do

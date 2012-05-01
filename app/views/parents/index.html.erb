@@ -1,0 +1,31 @@
+<h1>Listing parents</h1>
+
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Full name</th>
+    <th>Nickname</th>
+    <th>Organization</th>
+    <th></th>
+  </tr>
+
+<% @parents.each do |parent| %>
+  <tr>
+    <td><%= parent.first_name %></td>
+    <td><%= parent.last_name %></td>
+    <td><%= parent.full_name %></td>
+    <td><%= parent.nickname %></td>
+    <td><%= parent.organization %></td>
+    <td>
+      <%= link_to 'Show', parent %>
+      <%= link_to 'Edit', edit_parent_path(parent) %>
+      <%= link_to 'Destroy', parent, confirm: 'Are you sure?', method: :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Parent', new_parent_path %>

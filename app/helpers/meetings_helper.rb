@@ -8,12 +8,16 @@ module MeetingsHelper
     end
   end
 
-  def formatted_start_time
-    formatted_time @start_time
+  def mark_personal_button(conference_date, period, period_counter)
+    button_to 'Personal',
+              mark_personal_conference_date_meeting_path(conference_date, period.meeting_id, start_time: period.start_time, update: "period-#{period_counter}"),
+              remote: true
   end
 
-  def formatted_time(time)
-    time.strftime("%I:%M %p %Z")
+  def mark_available_button(conference_date, period, period_counter)
+    button_to 'Available',
+              mark_available_conference_date_meeting_path(conference_date, period.meeting_id, start_time: period.start_time, update: "period-#{period_counter}"),
+              remote: true
   end
 
 

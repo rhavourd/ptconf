@@ -19,10 +19,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">P/T Conf</a>
+        <a class="brand" href="<%= current_user ? dashboard_path : root_path %>">P/T Conf</a>
         <div class="nav-collapse">
           <ul class="nav">
             <li><%= link_to "Browse Organizations", organizations_path %></li>
+            <li><%= link_to "Calendar", conference_dates_path  %></li>
+            <li><%= link_to "Students", students_path %></li>
+            <li><%= link_to "Parents", parents_path %></li>
             <li><%= link_to "Pricing" %></li>
             <li><%= link_to "Contact Us" %></li>
           </ul>

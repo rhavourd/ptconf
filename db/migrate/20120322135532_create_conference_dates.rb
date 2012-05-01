@@ -1,14 +1,14 @@
-class CreateConferenceDays < ActiveRecord::Migration
+class CreateConferenceDates < ActiveRecord::Migration
   def change
-    create_table :conference_days do |t|
+    create_table :conference_dates do |t|
       t.date :date
       t.references :user
-      t.time :start_time
-      t.time :end_time
+      t.datetime :start_time
+      t.datetime :end_time
       t.integer :duration
 
       t.timestamps
     end
-    add_index :conference_days, :user_id
+    add_index :conference_dates, :user_id
   end
 end

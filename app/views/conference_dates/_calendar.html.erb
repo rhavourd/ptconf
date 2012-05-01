@@ -1,6 +1,6 @@
 <div id="calendar">
   <%= calendar_for(calendar) do |t| %>
-    <%= content_tag(:caption, calendar.first.date.strftime("%B"), :id => 'month' ) %>
+    <%= content_tag(:caption, calendar_month_name(calendar), :id => 'month' ) %>
     <%= t.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat') %>
     <%= t.day do |day, conferences| %>
       <%= day.day %>

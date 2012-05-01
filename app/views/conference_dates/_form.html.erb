@@ -1,7 +1,7 @@
 <% content_for :page_help do %>
   <h2>Need a little help?</h2>
-  Time slots marked "Available" can be reserved by parents for a meeting. Items marked "Busy" will not be
-  eligible for meeting requests.
+  Time slots marked "Available" can be reserved by parents for a meeting. Items marked "Busy" or "Personal"
+  will not be eligible for meeting requests.
 <% end %>
 
 <div class="row">
@@ -11,8 +11,8 @@
     <div class="form-inputs span3">
       <%= f.input :date, :as => :date_picker, :class => 'date_picker' %>
       <%= f.input :reason %>
-      <%= f.input :start_time, :as => :time_picker %>
-      <%= f.input :end_time, :as => :time_picker, :options_for_javascript => {:startTime => "08.00am"} %>
+      <%= f.input :formatted_start_time, :as => :time_picker %>
+      <%= f.input :formatted_end_time, :as => :time_picker %>
       <%= f.input :duration, :as => :range, :html_options => {:min => 5, :max => 60} %>
     </div>
 
@@ -31,7 +31,7 @@
       </thead>
       <tbody>
         <% if @conference_date.time_periods.periods %>
-          <%= render :partial => 'period', :collection => @conference_date.time_periods.periods %>
+          <%= render :partial => 'conference_dates/period', :collection => @conference_date.time_periods.periods %>
         <% else %>
         <tr rowspan="20">
           <td colspan="2">

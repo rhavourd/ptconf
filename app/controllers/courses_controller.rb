@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
+    @courses = current_user.courses.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @course = Course.find(params[:id])
+    @course = current_user.courses.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +36,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
-    @course = Course.find(params[:id])
+    @course = current_user.courses.find(params[:id])
   end
 
   # POST /courses

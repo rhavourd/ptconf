@@ -15,6 +15,7 @@
 class Course < ActiveRecord::Base
   attr_accessible :code, :description, :first_day, :last_day
   belongs_to :user
+  has_and_belongs_to_many :students
 
   validates :user_id, :presence => true
   validates :first_day, :presence => true

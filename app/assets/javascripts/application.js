@@ -51,4 +51,30 @@ $(document).ready(function() {
     step: 5
   });
 
+  $('.nameElement').each(function() {
+    // alert("setup observer");
+    // Save current value of element
+    $(this).data('oldVal', $(this).val());
+
+    // Look for changes in the value
+    $(this).bind("propertychange keyup input paste", function(event){
+      // If value has changed...
+      if ($(this).data('oldVal') != $(this).val()) {
+        // Updated stored value
+        $(this).data('oldVal', $(this).val());
+
+        // Do action
+        //alert("change event!" + $(this).val());
+        setFullName();
+      }
+    });
+
+    function setFullName() {
+      //alert("setFullName " + $('#parent_last_name').val() + ", " + $('#parent_first_name').val());
+      $('#parent_full_name').val($('#parent_last_name').val() + ", " + $('#parent_first_name').val());
+    }
+
+  });
+
+
 });

@@ -4,8 +4,8 @@
 #
 #  id                 :integer         not null, primary key
 #  conference_date_id :integer
-#  start_time         :time
-#  end_time           :time
+#  start_time         :datetime
+#  end_time           :datetime
 #  meet_with          :string(255)
 #  created_at         :datetime        not null
 #  updated_at         :datetime        not null
@@ -15,18 +15,24 @@
 class Meeting < ActiveRecord::Base
   belongs_to :conference_date
 
-  scope :between_start_end_time, lambda {|time| where("start_time <= ? AND end_time >= ?", time.time_of_day!, time.time_of_day!) }
-
   validates_presence_of :conference_date_id, :start_time, :end_time, :status
 
-  def start_time=(time)
-    time.time_of_day!
-    write_attribute(:start_time, time.to_s)
-  end
+  scope :between_start_end_time, lambda {|time| puts "\nscope: utc?=#{time.utc?} time=#{time}"; where("start_time <= ? AND end_time > ?", time, time) }
 
-  def end_time=(time)
-    time.time_of_day!
-    write_attribute(:end_time, time.to_s)
+=begin
+  def self.between_start_end_time(time)
+    logger.debug "Meeting#between_start_end_time time=>#{time}"
+    logger.debug "  self=#{self}"
+    self.select do |m|
+      logger.debug "  m.start_time => #{m.start_time}"
+      m.start_time <= time && m.end_time >= time
+    end
+
+  end
+=end
+
+  def formatted_start_time
+    start_time.strftime("%I:%M %p")
   end
 
   def is_available?

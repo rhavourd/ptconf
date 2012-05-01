@@ -1,10 +1,14 @@
 <tr class="meeting">
   <td><%= period.formatted_start_time %></td>
   <td id="period-<%= period_counter %>" class="<%= period.status.downcase %>"><%= period.status %></td>
-  <td>
-    <%= button_to 'Personal',
-                  mark_personal_conference_date_meeting_path(@conference_date, period.meeting_id, start_time: period.start_time, update: "period-#{period_counter}"),
-                  update: "period-#{period_counter}", remote: true %>
+  <td id="period-<%= period_counter %>-btn">
+    <%= mark_personal_button(@conference_date, period, period_counter) if period.is_available? %>
+
+    <% if period.is_personal? %>
+      <%= button_to 'Available',
+                    mark_available_conference_date_meeting_path(@conference_date, period.meeting_id, start_time: period.start_time, update: "period-#{period_counter}"),
+                    update: "period-#{period_counter}", remote: true %>
+      <%= mark_available_button(@conference_date, period, period_counter) if period.is_personal? %>
+    <% end %>
   </td>
-  <td><%= mark_personal_conference_date_meeting_path(@conference_date, period.meeting_id, start_time: period.start_time) %></td>
 </tr>

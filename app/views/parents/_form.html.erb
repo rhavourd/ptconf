@@ -1,0 +1,15 @@
+<%= simple_form_for(@parent) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name, autofocus: true, :input_html => {:class => 'nameElement'} %>
+    <%= f.input :last_name, :input_html => {:class => 'nameElement'} %>
+    <%= f.input :full_name, :disabled => true %>
+    <%= f.input :nickname %>
+    <%= f.association :organization %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

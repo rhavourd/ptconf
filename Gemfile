@@ -18,7 +18,7 @@ end
 group :development do
   gem 'sqlite3'
   gem 'awesome_print'
-  #gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
 
 group :test do
@@ -46,12 +46,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-# This gem overrides Time so there's no date component. From https://github.com/lailsonbm/time_of_day
-gem 'time_of_day'
-
 gem "therubyracer", :require => 'v8'
 gem 'simple_form'
 gem 'date_validator'
 gem "watu_table_builder", :require => "table_builder"
-
 

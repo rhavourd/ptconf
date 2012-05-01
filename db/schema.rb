@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120413170859) do
+ActiveRecord::Schema.define(:version => 20120419195610) do
 
   create_table "conference_dates", :force => true do |t|
     t.date     "date"
     t.integer  "user_id"
-    t.time     "start_time"
-    t.time     "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.integer  "duration"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -43,8 +43,8 @@ ActiveRecord::Schema.define(:version => 20120413170859) do
 
   create_table "meetings", :force => true do |t|
     t.integer  "conference_date_id"
-    t.time     "start_time"
-    t.time     "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.string   "meet_with"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
@@ -57,6 +57,40 @@ ActiveRecord::Schema.define(:version => 20120413170859) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "parents", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "full_name"
+    t.string   "nickname"
+    t.integer  "organization_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "parents", ["organization_id"], :name => "index_parents_on_organization_id"
+
+  create_table "parents_students", :id => false, :force => true do |t|
+    t.integer "student_id"
+    t.integer "parent_id"
+  end
+
+  create_table "students", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "full_name"
+    t.string   "nickname"
+    t.integer  "organization_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "students", ["organization_id"], :name => "index_students_on_organization_id"
+
+  create_table "students_courses", :id => false, :force => true do |t|
+    t.integer "student_id"
+    t.integer "course_id"
   end
 
   create_table "users", :force => true do |t|

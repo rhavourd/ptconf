@@ -13,12 +13,17 @@ class TimePeriods
     return unless @conference_date.start_time && @conference_date.duration
 
     periods = []
-    time = @conference_date.start_time.time_of_day!
+    time = @conference_date.start_time
     begin
       period = Period.new(time, time + @conference_date.duration * 60, @default_status)
       meeting = @conference_date.meetings.between_start_end_time(period.start_time).first
-      period.meeting_id = meeting.id  if meeting.present?
+      if meeting.present?
+        period.meeting_id = meeting.id
+        period.status = meeting.status
+      end
       periods << period
+      puts "init_periods: time=#{time} end_time=#{@conference_date.end_time} count=#{periods.count}"
+      puts "  meeting?=#{meeting.present?} period=#{period.inspect}"
     end while (time += @conference_date.duration * 60) <= @conference_date.end_time
     periods
   end
@@ -43,19 +48,15 @@ class Period
   attr_reader :start_time
   attr_reader :end_time
   attr_reader :duration
-  attr_reader :status
+  attr_accessor :status
+  attr_accessor :meeting_id
 
   def initialize(start_time, end_time, status)
     @start_time = start_time
-    @start_time.time_of_day!
     @end_time = end_time
-    @end_time.time_of_day!
-    @duration = ((@end_time - @start_time).to_int / 60).to_int
+    @duration = ((@end_time - @start_time) / 60).to_int
     @status = status
-  end
-
-  def meeting_id
-    @meeting_id || 0
+    @meeting_id = 0
   end
 
   def formatted_start_time
@@ -63,7 +64,7 @@ class Period
   end
 
   def formatted_time(time)
-    time.strftime("%I:%M %p %Z")
+    time.strftime("%I:%M %p")
   end
 
   def is_available?

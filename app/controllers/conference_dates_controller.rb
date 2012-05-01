@@ -46,7 +46,8 @@ class ConferenceDatesController < ApplicationController
 
     respond_to do |format|
       if @conference_date.save
-        format.html { redirect_to @conference_date, notice: 'Conference date was successfully created.' }
+        logger.debug "redirect_to #{conference_date_meetings_url(@conference_date)}"
+        format.html { redirect_to conference_date_meetings_url(@conference_date), notice: 'Conference date was successfully created.' }
         format.json { render json: @conference_date, status: :created, location: @conference_date }
       else
         format.html { render action: "new" }
@@ -62,7 +63,8 @@ class ConferenceDatesController < ApplicationController
 
     respond_to do |format|
       if @conference_date.update_attributes(params[:conference_date])
-        format.html { redirect_to @conference_date, notice: 'Conference date was successfully updated.' }
+        logger.debug "redirect_to #{conference_date_meetings_url(@conference_date)}"
+        format.html { redirect_to conference_date_meetings_url(@conference_date), notice: 'Conference date was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

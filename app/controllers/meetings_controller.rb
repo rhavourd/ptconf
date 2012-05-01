@@ -5,10 +5,7 @@ class MeetingsController < ApplicationController
   end
 
   def mark_personal
-    logger.debug "********************************* In mark_personal!"
-    logger.debug "@c=#{@conference_date.to_yaml}"
-
-    start_time = Time.parse(params[:start_time]).time_of_day!
+    start_time = Time.parse(params[:start_time])
     @meeting = @conference_date.meetings.between_start_end_time(start_time).first
     if @meeting.nil?
       @meeting = @conference_date.meetings.build
@@ -18,8 +15,24 @@ class MeetingsController < ApplicationController
 
     @meeting.mark_personal
     @meeting.save
-    logger.debug "@meeting: class #{@meeting.class} #{@meeting.to_yaml}"
-    logger.debug "update #{params[:update]}"
+
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
+  def mark_available
+    start_time = Time.parse(params[:start_time])
+    @meeting = @conference_date.meetings.between_start_end_time(start_time).first
+    if @meeting.nil?
+      @meeting = @conference_date.meetings.build
+      @meeting.start_time = start_time
+      @meeting.end_time = start_time + (@conference_date.duration * 60)
+    end
+
+    @meeting.mark_available
+    @meeting.save
 
     respond_to do |format|
       format.js
@@ -32,7 +45,7 @@ class MeetingsController < ApplicationController
     logger.debug "User=#{current_user}"
     logger.debug "@c=#{@conference_date.to_yaml}"
 
-    start_time = Time.parse(params[:start_time]).time_of_day!
+    start_time = Time.parse(params[:start_time])
     @meeting = @conference_date.meetings.between_start_end_time(start_time)
     logger.debug "@meeting: class #{@meeting.class} #{@meeting.to_yaml}"
 
@@ -42,7 +55,6 @@ class MeetingsController < ApplicationController
   end
 
   def create
-    puts params
 
     respond_to do |format|
       if @meeting.save

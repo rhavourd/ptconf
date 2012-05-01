@@ -1,4 +1,4 @@
-class AddReasonToConferenceDay < ActiveRecord::Migration
+class AddReasonToConferenceDate < ActiveRecord::Migration
   def change
     add_column :conference_dates, :reason, :string
 
