@@ -1,18 +1,27 @@
-<%= simple_form_for(@student) do |f| %>
+<%= simple_form_for @student do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <fieldset>
+    <legend>Student</legend>
+    <p>
     <%= f.input :first_name, autofocus: true %>
     <%= f.input :last_name %>
-    <%= f.input :full_name %>
+    <%= @student.full_name %>
     <%= f.input :nickname %>
-    <%= f.association :organization %>
-  </div>
-  
+    <%# f.association :organization %>
+    </p>
+  </fieldset>
+
   <fieldset>
-    <legend>Parents &ndsp; <%= link_to_add_fields "Add Parent", f, :parents %></legend>
+    <legend>Parents &nbsp; <%= link_to_add_fields "Add Parent", f, :relationships %></legend>
     <ol>
-      <%= render 'parent_fields', :collection => @parents %>
+        <%= f.simple_fields_for :relationships do |builder| %>
+          <li class="inline">
+            <%= builder.input :parent_name, :disabled => true, :label => false, :wrapper_html => {:style => "display:inline-block;"} %>
+            <%= builder.label :_destroy, "Remove", :style => "display:inline;" %>
+            <%= builder.check_box :_destroy %>
+          </li>
+        <% end %>
     </ol>
   </fieldset>
 

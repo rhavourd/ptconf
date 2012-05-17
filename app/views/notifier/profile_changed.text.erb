@@ -1,0 +1,13 @@
+Notifier#profile_changed find me in app/views/app/views/notifier/profile_changed.text.erb
+
+<%= @greeting %>, 
+
+Your profile at <%= root_url :host => "localhost:3000" %> has been updated. If you made changes to this then you
+can disregard this email. If you did not make these changes then please contact our support
+department immediately.
+
+  <%= @record.full_name %>
+  <%= parent_url(@record, :host => "localhost:3000") %>
+
+Thanks for your continued support.
+

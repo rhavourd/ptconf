@@ -13,9 +13,29 @@
 #
 
 class Student < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :nickname, :parents_attributes
+  include UpdateFullName
+
+  attr_accessible :first_name, :last_name, :nickname, :relationships_attributes
+
   belongs_to :organization
-  has_and_belongs_to_many :courses
-  has_and_belongs_to_many :parents
-  accepts_nested_attributes_for :parents
+  has_many :courses, :through => :students_courses
+
+  has_many :parents, :through => :relationships
+  has_many :relationships, dependent: :destroy
+  accepts_nested_attributes_for :relationships,
+                                :allow_destroy => true,
+                                :reject_if => proc {|attrs| attrs['parent_id'].blank?}
+
+  def parent?(parent)
+    relationships.find_by_parent_id(parent.id)
+  end
+
+  def parent!(parent)
+    relationships.create!(parent_id: parent.id)
+  end
+
+  def unparent!(parent)
+    relationships.find_by_parent_id(parent.id).destroy
+  end
+
 end

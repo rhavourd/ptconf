@@ -2,7 +2,9 @@ Ptconf::Application.routes.draw do
 
   resources :parents
 
-  resources :students
+  resources :students do
+    resources :relationships
+  end
 
   resources :conference_dates do
     resources :meetings do

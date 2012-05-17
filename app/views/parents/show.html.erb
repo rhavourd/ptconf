@@ -1,30 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>First name:</b>
-  <%= @parent.first_name %>
-</p>
+<fieldset>
+  <legend><%= @parent.full_name %></legend>
+  <p>
+    <b>First name:</b>
+    <%= @parent.first_name %>
+  </p>
 
-<p>
-  <b>Last name:</b>
-  <%= @parent.last_name %>
-</p>
+  <p>
+    <b>Last name:</b>
+    <%= @parent.last_name %>
+  </p>
 
-<p>
-  <b>Full name:</b>
-  <%= @parent.full_name %>
-</p>
+  <p>
+    <b>Nickname:</b>
+    <%= @parent.nickname %>
+  </p>
 
-<p>
-  <b>Nickname:</b>
-  <%= @parent.nickname %>
-</p>
-
-<p>
-  <b>Organization:</b>
-  <%= @parent.organization %>
-</p>
-
+  <p>
+    <b>Organization:</b>
+    <%= @parent.organization %>
+  </p>
+  
+  <p>
+    <b>Email</b>
+    <%= @parent.email %>
+  </p>
+  
+  <p>
+    <b>Phone</b>
+    <%= @parent.phone %> &nbsp; (<%= @parent.phone_has_sms ? "Accepts Text Messages" : "No Texting!" %>)
+  </p>
+</fieldset>
+  
+<fieldset>
+  <legend>Students</legend>
+  <%= render(:partial => "student", :collection => @students) if @students %>
+</fieldset>
 
 <%= link_to 'Edit', edit_parent_path(@parent) %> |
 <%= link_to 'Back', parents_path %>

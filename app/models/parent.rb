@@ -13,8 +13,25 @@
 #
 
 class Parent < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :nickname, :students_attributes
+  include UpdateFullName
+
+  after_update :notify_updated
+
+  attr_accessible :first_name, :last_name, :nickname, :organization_id, :email, :phone, :phone_has_sms
+
   belongs_to :organization
-  has_and_belongs_to_many :students
-  accepts_nested_attributes_for :students
+
+  has_many :students, :through => :relationships
+
+  has_many :relationships, dependent: :destroy
+  accepts_nested_attributes_for :relationships,
+                                :allow_destroy => true,
+                                :reject_if => proc {|attrs| attrs['student_id'].blank?}
+
+  private
+
+  def notify_updated
+    logger.debug "Parent#notify_updated #{self.inspect}"
+    Notifier.profile_changed(self).deliver
+  end
 end

@@ -6,6 +6,9 @@
     <%= f.input :last_name, :input_html => {:class => 'nameElement'} %>
     <%= f.input :full_name, :disabled => true %>
     <%= f.input :nickname %>
+    <%= f.input :email, :placeholder => 'user@domain.com' %>
+    <%= f.input :phone, :placeholder => '999-888-1234' %>
+    <%= f.input :phone_has_sms %>
     <%= f.association :organization %>
   </div>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419195610) do
+ActiveRecord::Schema.define(:version => 20120514175704) do
 
   create_table "conference_dates", :force => true do |t|
     t.date     "date"
@@ -67,11 +67,14 @@ ActiveRecord::Schema.define(:version => 20120419195610) do
     t.integer  "organization_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "email"
+    t.string   "phone"
+    t.boolean  "phone_has_sms"
   end
 
   add_index "parents", ["organization_id"], :name => "index_parents_on_organization_id"
 
-  create_table "parents_students", :id => false, :force => true do |t|
+  create_table "relationships", :force => true do |t|
     t.integer "student_id"
     t.integer "parent_id"
   end
@@ -88,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20120419195610) do
 
   add_index "students", ["organization_id"], :name => "index_students_on_organization_id"
 
-  create_table "students_courses", :id => false, :force => true do |t|
+  create_table "students_courses", :force => true do |t|
     t.integer "student_id"
     t.integer "course_id"
   end

@@ -1,0 +1,7 @@
+<li>
+  Inspect: <%= relationship.inspect %> <%= relationship.present? %>
+  <br>
+  <%= relationship.parent_name %>
+  <%= f.check_box :_destroy %>
+  <%= f.label :_destroy, "remove" %>
+</li>

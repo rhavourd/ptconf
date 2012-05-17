@@ -46,8 +46,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem "therubyracer", :require => 'v8'
+#gem "therubyracer", :require => 'v8'
 gem 'simple_form'
 gem 'date_validator'
 gem "watu_table_builder", :require => "table_builder"
+gem 'rest-client'
+gem 'tropo-webapi-ruby'
 

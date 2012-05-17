@@ -14,6 +14,7 @@ class ParentsController < ApplicationController
   # GET /parents/1.json
   def show
     @parent = Parent.find(params[:id])
+    @students = @parent.students
 
     respond_to do |format|
       format.html # show.html.erb

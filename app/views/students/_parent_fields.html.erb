@@ -1,7 +1,4 @@
-<% if parent_fields.present? %>
-  <li>
-    <%= parent_fields.full_name %>
-    <%= f.hidden_field :_destroy %>
-    <%= link_to "remove", '#', class: "remove_fields" %>
-  </li>
-<% end %>
+<li>
+  <%= parent_fields.full_name %>
+  (<%# link_to "remove", student_relationship_path(student,parent_fields), :method => :delete, class: "remove_fields" %>)
+</li>
