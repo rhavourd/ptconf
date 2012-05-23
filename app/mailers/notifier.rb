@@ -22,7 +22,7 @@ class Notifier < ActionMailer::Base
     mail  to: "rhavourd@schools-open.com",
           subject: @subject
 
-    if true
+    if !true
       # Send SMS
       RestClient.get 'https://api.tropo.com/1.0/sessions', {:params => {
           :action => 'create',

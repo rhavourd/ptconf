@@ -6,13 +6,13 @@ gem 'rails', '3.2.2.rc1'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
+  gem 'bootstrap-sass'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
+  gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass'
 end
 
 group :development do
@@ -26,7 +26,8 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  #gem 'pg'
+  gem 'sqlite3'
 end
 
 gem 'jquery-rails'
@@ -46,7 +47,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-#gem "therubyracer", :require => 'v8'
 gem 'simple_form'
 gem 'date_validator'
 gem "watu_table_builder", :require => "table_builder"

@@ -9,7 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- * require meetings
 */
 
 @import "bootstrap";
@@ -17,10 +16,11 @@
 body { padding-top: 60px; }
 
 @import "bootstrap-responsive";
-@import "bootstrap-datepicker.css";
+@import "bootstrap-datepicker";
 
-@import "timePicker.css";
-@import "calendar.css";
-@import "calendar-overrides.css";
+@import "timePicker";
+@import "calendar";
+@import "calendar-overrides";
 
-@import "meetings.css.scss";
+@import "meetings";
+
