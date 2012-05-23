@@ -47,7 +47,7 @@ gem 'capistrano'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem 'simple_form'
+gem 'simple_form', '>=2.02'
 gem 'date_validator'
 gem "watu_table_builder", :require => "table_builder"
 gem 'rest-client'
