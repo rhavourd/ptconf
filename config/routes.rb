@@ -1,5 +1,9 @@
 Ptconf::Application.routes.draw do
 
+  post "operator/index"
+
+  get "operator/test"
+
   resources :parents
 
   resources :students do
