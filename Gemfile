@@ -18,7 +18,7 @@ end
 group :development do
   gem 'sqlite3'
   gem 'awesome_print'
-  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  #gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
 
 group :test do
