@@ -1,7 +1,10 @@
 class OperatorController < ApplicationController
+  skip_before_filter :authenticate
+  layout nil
+
   def index
     tropo = Tropo::Generator.new do
-      on :event => 'continue', :next => '/the_answer.json'
+      on :event => 'continue', :next => File.join(controller_name,'acknowledge.json')
       ask({ :name => 'account_number',
             :bargein => 'true',
             :timeout => 30,
@@ -10,9 +13,12 @@ class OperatorController < ApplicationController
         choices :value => '[5 DIGITS]'
       end
     end
-    tropo.response
+    render :json => tropo.response
   end
 
-  def test
+  def acknowledge
+    tropo = Tropo::Generator.new do
+      say :value => 'Thank you. Have a good day.'
+    end
   end
 end
