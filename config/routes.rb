@@ -1,8 +1,7 @@
 Ptconf::Application.routes.draw do
 
   post "operator/index"
-
-  get "operator/test"
+  post "operator/acknowledge"
 
   resources :parents
 
