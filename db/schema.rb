@@ -79,6 +79,11 @@ ActiveRecord::Schema.define(:version => 20120514175704) do
     t.integer "parent_id"
   end
 
+  create_table "rosters", :force => true do |t|
+    t.integer "student_id"
+    t.integer "course_id"
+  end
+
   create_table "students", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -90,11 +95,6 @@ ActiveRecord::Schema.define(:version => 20120514175704) do
   end
 
   add_index "students", ["organization_id"], :name => "index_students_on_organization_id"
-
-  create_table "students_courses", :force => true do |t|
-    t.integer "student_id"
-    t.integer "course_id"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "email"

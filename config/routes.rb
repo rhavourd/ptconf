@@ -1,5 +1,7 @@
 Ptconf::Application.routes.draw do
 
+  resources :rosters
+
   post "operator/index"
   post "operator/acknowledge"
 

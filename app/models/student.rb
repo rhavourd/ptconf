@@ -18,7 +18,8 @@ class Student < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :nickname, :relationships_attributes
 
   belongs_to :organization
-  has_many :courses, :through => :students_courses
+  has_many :courses, :through => :rosters
+  has_many :rosters, dependent: :destroy
 
   has_many :parents, :through => :relationships
   has_many :relationships, dependent: :destroy

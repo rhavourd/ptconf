@@ -12,3 +12,9 @@
     <%= f.button :submit, :class => 'btn-primary' %>
   </div>
 <% end %>
+
+<%# button_to "Add Students to Roster", new_roster(@course) %>
+
+<h2>Class Roster</h2>
+<%= render :partial => "mystudents", :collection => @students, :as => :student %>
+
