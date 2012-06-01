@@ -1,4 +1,5 @@
-<%= logger.debug "in js... update #{params[:update]} with #{@meeting.status}" %>
 $('#<%= raw(params[:update]) %>').html("<%= @meeting.status.titleize %>");
-$('#<%= raw(params[:update]) %>').removeClass('personal').addClass('available');
+$('#<%= raw(params[:update]) %>').removeClass('personal')
+$('#<%= raw(params[:update]) %>').addClass('available');
+$('#<%= raw(params[:update]) + "-btn" %>').html("<%= escape_javascript(mark_personal_button(@meeting.conference_date, @meeting, params[:update])) %>");$('#<%= raw(params[:update]) %>').effect("highlight", {}, 1500);
 $('#<%= raw(params[:update]) %>').effect("highlight", {}, 1500);

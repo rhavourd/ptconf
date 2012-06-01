@@ -3,9 +3,8 @@ class OperatorController < ApplicationController
   layout nil
 
   def index
-    my_controller_name = self.controller_name
     tropo = Tropo::Generator.new do
-      on :event => 'continue', :next => File.join(my_controller_name,'acknowledge.json')
+      on :event => 'continue', :next => 'acknowledge.json'
       ask({ :name => 'account_number',
             :bargein => 'true',
             :timeout => 30,
@@ -21,5 +20,6 @@ class OperatorController < ApplicationController
     tropo = Tropo::Generator.new do
       say :value => 'Thank you. Have a good day.'
     end
+    render :json => tropo.response
   end
 end

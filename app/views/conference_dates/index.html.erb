@@ -18,10 +18,10 @@
 
 <% @conference_dates.each do |conference_date| %>
   <tr>
-    <td><%= conference_date.date %></td>
-    <td><%= conference_date.start_time %></td>
-    <td><%= conference_date.end_time %></td>
-    <td><%= conference_date.duration %></td>
+    <td><%= formatted_date conference_date.date %></td>
+    <td><%= formatted_time conference_date.start_time %></td>
+    <td><%= formatted_time conference_date.end_time %></td>
+    <td><%= conference_date.duration %> minutes </td>
     <td><%= conference_date.reason %></td>
     <td>
       <%= link_to 'Show', conference_date %>

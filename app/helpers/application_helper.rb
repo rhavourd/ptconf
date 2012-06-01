@@ -14,7 +14,11 @@ module ApplicationHelper
   end
 
   def formatted_time(time)
-    time.strftime("%I:%M %p %Z")
+    time.strftime("%I:%M %p")
+  end
+
+  def formatted_date(date)
+    date.strftime("%m/%d/%Y")
   end
 
   def link_to_add_fields(name, f, association)

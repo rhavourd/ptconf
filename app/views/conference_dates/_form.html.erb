@@ -5,7 +5,7 @@
 <% end %>
 
 <div class="row">
-  <%= simple_form_for(@conference_date) do |f| %>
+  <%= simple_form_for(@conference_date, :html => {:class => 'span4'}) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs span3">

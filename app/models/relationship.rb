@@ -4,6 +4,8 @@ class Relationship < ActiveRecord::Base
   validates :parent_id, presence: true
   validates :student_id, presence: true
 
+  attr_accessible :parent_id
+
   def parent_name
     parent.full_name  if parent
   end

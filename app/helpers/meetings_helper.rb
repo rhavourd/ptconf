@@ -9,14 +9,22 @@ module MeetingsHelper
   end
 
   def mark_personal_button(conference_date, period, period_counter)
+    target = (period_counter.is_a?(String) ? period_counter : "period-#{period_counter}")
+    period_meeting_id = (period.respond_to?(:meeting_id) ? period.meeting_id : period.id)
+
     button_to 'Personal',
-              mark_personal_conference_date_meeting_path(conference_date, period.meeting_id, start_time: period.start_time, update: "period-#{period_counter}"),
+              mark_personal_conference_date_meeting_path(conference_date, period_meeting_id, start_time: period.start_time,
+                                                         update: target),
               remote: true
   end
 
   def mark_available_button(conference_date, period, period_counter)
+    target = (period_counter.is_a?(String) ? period_counter : "period-#{period_counter}")
+    period_meeting_id = (period.respond_to?(:meeting_id) ? period.meeting_id : period.id)
+
     button_to 'Available',
-              mark_available_conference_date_meeting_path(conference_date, period.meeting_id, start_time: period.start_time, update: "period-#{period_counter}"),
+              mark_available_conference_date_meeting_path(conference_date, period_meeting_id, start_time: period.start_time,
+                                                          update: target),
               remote: true
   end
 
