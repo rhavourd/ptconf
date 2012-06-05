@@ -15,6 +15,13 @@
 
 <%# button_to "Add Students to Roster", new_roster(@course) %>
 
-<h2>Class Roster</h2>
-<%= render :partial => "student", :collection => @students %>
+<fieldset>
+  <legend>Class Roster</legend>
+  <%= simple_fields_for(@course) do |f| %>
+    <%= link_to_add_roster_fields "Add Student" %>
+    <ol>
+      <%= render(@course.students) %>
+    </ol>
+  <% end %>
 
+</fieldset>

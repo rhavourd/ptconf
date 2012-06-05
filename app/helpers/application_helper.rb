@@ -29,4 +29,13 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def link_to_add_roster_fields(name)
+    new_object = Roster.new
+    id = new_object.object_id
+    fields = simple_fields_for(:roster, new_object, child_index: id.abs) do |builder|
+      render(:roster.to_s.singularize + "_fields", f: builder)
+    end
+    link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+  end
 end
