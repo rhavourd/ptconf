@@ -1,3 +1,10 @@
+#
+# Simple module to provide method for generating the full_name field
+#
+# Got an out-of-date table that needs full_name populated?  Try something like this:
+#     Student.all.map {|s| s.send(:update_full_name); s.save!}
+#
+
 module UpdateFullName
   extend ActiveSupport::Concern
 

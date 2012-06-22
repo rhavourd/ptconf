@@ -17,7 +17,6 @@
   <fieldset>
     <legend>Class Roster</legend>
     <%= simple_fields_for(@course) do |f| %>
-      <%= Student.all.inspect %>
       <%= Student.all.map { |s| [s.full_name, s.id]} %>
       <%= link_to_add_roster_fields "Add Student" %>
       <ol>
