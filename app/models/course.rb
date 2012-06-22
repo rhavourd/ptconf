@@ -17,6 +17,9 @@ class Course < ActiveRecord::Base
   belongs_to :user
   has_many :students, :through => :rosters
   has_many :rosters, dependent: :destroy
+  accepts_nested_attributes_for :rosters,
+                                :allow_destroy => true,
+                                :reject_if => proc {|attrs| attrs['student_id'].blank?}
 
   validates :user_id, :presence => true
   validates :first_day, :presence => true

@@ -36,6 +36,6 @@ module ApplicationHelper
     fields = simple_fields_for(:roster, new_object, child_index: id.abs) do |builder|
       render(:roster.to_s.singularize + "_fields", f: builder)
     end
-    link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
+    link_to(name, '#', class: "add_course_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
 end

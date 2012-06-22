@@ -11,17 +11,19 @@
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
   </div>
+
+  <%# button_to "Add Students to Roster", new_roster(@course) %>
+
+  <fieldset>
+    <legend>Class Roster</legend>
+    <%= simple_fields_for(@course) do |f| %>
+      <%= Student.all.inspect %>
+      <%= Student.all.map { |s| [s.full_name, s.id]} %>
+      <%= link_to_add_roster_fields "Add Student" %>
+      <ol>
+        <%= render(@course.students) %>
+      </ol>
+    <% end %>
+
+  </fieldset>
 <% end %>
-
-<%# button_to "Add Students to Roster", new_roster(@course) %>
-
-<fieldset>
-  <legend>Class Roster</legend>
-  <%= simple_fields_for(@course) do |f| %>
-    <%= link_to_add_roster_fields "Add Student" %>
-    <ol>
-      <%= render(@course.students) %>
-    </ol>
-  <% end %>
-
-</fieldset>

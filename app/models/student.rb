@@ -15,7 +15,7 @@
 class Student < ActiveRecord::Base
   include UpdateFullName
 
-  attr_accessible :first_name, :last_name, :nickname, :relationships_attributes
+  attr_accessible :first_name, :last_name, :nickname, :relationships_attributes, :parent_id
 
   belongs_to :organization
   has_many :courses, :through => :rosters
@@ -26,6 +26,14 @@ class Student < ActiveRecord::Base
   accepts_nested_attributes_for :relationships,
                                 :allow_destroy => true,
                                 :reject_if => proc {|attrs| attrs['parent_id'].blank?}
+
+  def name
+    full_name
+  end
+
+  def label
+    full_name
+  end
 
   def parent?(parent)
     relationships.find_by_parent_id(parent.id)
