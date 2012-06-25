@@ -1,2 +1,1 @@
-<%# f.association :student, :collection => Student.all, :prompt => "Choose a student" %>
-<%= f.select :student, Student.all.map { |s| [s.full_name, s.id]} %>
+<%= f.association :student, :label => false %>

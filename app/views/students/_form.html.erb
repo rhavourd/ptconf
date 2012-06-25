@@ -15,17 +15,17 @@
   <fieldset>
     <legend>Parents &nbsp; <%= link_to_add_fields "Add Parent", f, :relationships %></legend>
     <ol>
-        <%= f.simple_fields_for :relationships do |builder| %>
-          <li class="inline">
-            <%= builder.input :parent_name, :disabled => true, :label => false, :wrapper_html => {:style => "display:inline-block;"} %>
-            <%= builder.label :_destroy, "Remove", :style => "display:inline;" %>
-            <%= builder.check_box :_destroy %>
-          </li>
-        <% end %>
+      <%= f.simple_fields_for :relationships do |builder| %>
+        <li class="inline">
+          <%= builder.input :parent_name, :disabled => true, :label => false, :wrapper_html => {:style => "display:inline-block;"} %>
+          <%= builder.label :_destroy, "Remove", :style => "display:inline;" %>
+          <%= builder.check_box :_destroy %>
+        </li>
+      <% end %>
     </ol>
   </fieldset>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => 'btn-primary' %>
   </div>
 <% end %>

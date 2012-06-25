@@ -13,7 +13,8 @@
 #
 
 class Course < ActiveRecord::Base
-  attr_accessible :code, :description, :first_day, :last_day
+  attr_accessible :code, :description, :first_day, :last_day, :rosters_attributes, :student_id
+
   belongs_to :user
   has_many :students, :through => :rosters
   has_many :rosters, dependent: :destroy

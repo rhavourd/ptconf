@@ -20,6 +20,10 @@ class Student < ActiveRecord::Base
   belongs_to :organization
   has_many :courses, :through => :rosters
   has_many :rosters, dependent: :destroy
+  accepts_nested_attributes_for :rosters,
+                                :allow_destroy => true,
+                                :reject_if => proc {|attrs| attrs['course_id'].blank?}
+
 
   has_many :parents, :through => :relationships
   has_many :relationships, dependent: :destroy

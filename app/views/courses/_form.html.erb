@@ -1,28 +1,27 @@
-<%= simple_form_for(@course) do |f| %>
+<%= simple_form_for @course do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <fieldset>
     <%= f.input :code %>
     <%= f.input :description %>
     <%= f.input :first_day, :as => :date_picker, :class => 'date_picker' %>
     <%= f.input :last_day, :as => :date_picker,  :class => 'date_picker' %>
-  </div>
+  </fieldset>
 
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
   </div>
 
-  <%# button_to "Add Students to Roster", new_roster(@course) %>
-
   <fieldset>
-    <legend>Class Roster</legend>
-    <%= simple_fields_for(@course) do |f| %>
-      <%= Student.all.map { |s| [s.full_name, s.id]} %>
-      <%= link_to_add_roster_fields "Add Student" %>
-      <ol>
-        <%= render(@course.students) %>
-      </ol>
-    <% end %>
-
+    <legend>Class Roster &nbsp; <%= link_to_add_fields "Add Student", f, :rosters %></legend>
+    <ol>
+      <%= f.simple_fields_for :rosters do |builder| %>
+        <li class="inline">
+          <%= builder.input :student_name, :disabled => true, :label => false, :wrapper_html => {:style => "display:inline-block;"} %>
+          <%= builder.label :_destroy, "Remove", :style => "display:inline;" %>
+          <%= builder.check_box :_destroy %>
+        </li>
+      <% end %>
+    </ol>
   </fieldset>
 <% end %>

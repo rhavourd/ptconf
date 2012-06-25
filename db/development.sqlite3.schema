@@ -1,0 +1,15 @@
+CREATE TABLE "conference_dates" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "date" date, "user_id" integer, "start_time" datetime, "end_time" datetime, "duration" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "reason" varchar(255));
+CREATE TABLE "courses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "code" varchar(255), "description" varchar(255), "first_day" date, "last_day" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "user_id" integer);
+CREATE TABLE "dashboards" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE TABLE "meetings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "conference_date_id" integer, "start_time" datetime, "end_time" datetime, "meet_with" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "status" varchar(9));
+CREATE TABLE "organizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE TABLE "parents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "full_name" varchar(255), "nickname" varchar(255), "organization_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar(255), "phone" varchar(255), "phone_has_sms" boolean);
+CREATE TABLE "relationships" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "student_id" integer, "parent_id" integer);
+CREATE TABLE rosters ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "student_id" integer, "course_id" integer);
+CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL);
+CREATE TABLE "students" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "full_name" varchar(255), "nickname" varchar(255), "organization_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "password_digest" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL);
+CREATE INDEX "index_conference_dates_on_user_id" ON "conference_dates" ("user_id");
+CREATE INDEX "index_meetings_on_conference_date_id" ON "meetings" ("conference_date_id");
+CREATE INDEX "index_parents_on_organization_id" ON "parents" ("organization_id");
+CREATE INDEX "index_students_on_organization_id" ON "students" ("organization_id");
