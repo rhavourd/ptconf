@@ -3,13 +3,12 @@
 
   <fieldset>
     <legend>Student</legend>
-    <p>
-    <%= f.input :first_name, autofocus: true %>
-    <%= f.input :last_name %>
-    <%= @student.full_name %>
+    <div class="name-element">
+      <%= f.input :first_name, autofocus: true %>
+      <%= f.input :last_name %>
+      <%= f.input :full_name, :disabled => true %>
+    </div>
     <%= f.input :nickname %>
-    <%# f.association :organization %>
-    </p>
   </fieldset>
 
   <fieldset>
