@@ -1,0 +1,25 @@
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th>Date</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Duration</th>
+    <th>Reason</th>
+    <th>Actions</th>
+  </tr>
+
+  <% @conference_dates.each do |conference_date| %>
+    <tr>
+      <td><%= formatted_date conference_date.date %></td>
+      <td><%= formatted_time conference_date.start_time %></td>
+      <td><%= formatted_time conference_date.end_time %></td>
+      <td><%= conference_date.duration %> minutes </td>
+      <td><%= conference_date.reason %></td>
+      <td>
+        <%= link_to 'Show', conference_date %>
+        <%= link_to 'Edit', edit_conference_date_path(conference_date) %>
+        <%= link_to 'Destroy', conference_date, confirm: 'Are you sure?', method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>

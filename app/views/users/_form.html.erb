@@ -1,0 +1,16 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="name-element">
+      <%= f.input :first_name, autofocus: true %>
+      <%= f.input :last_name %>
+      <%= f.input :full_name, :disabled => true %>
+    </div>
+    <%= f.input :email %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+  </div>
+<% end %>
