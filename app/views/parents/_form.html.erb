@@ -2,9 +2,11 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :first_name, autofocus: true, :input_html => {:class => 'nameElement'} %>
-    <%= f.input :last_name, :input_html => {:class => 'nameElement'} %>
-    <%= f.input :full_name, :disabled => true %>
+    <div class="name-element">
+      <%= f.input :first_name, autofocus: true %>
+      <%= f.input :last_name %>
+      <%= f.input :full_name, :disabled => true %>
+    </div>
     <%= f.input :nickname %>
     <%= f.input :email, :placeholder => 'user@domain.com' %>
     <%= f.input :phone, :placeholder => '999-888-1234' %>

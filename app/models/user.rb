@@ -10,8 +10,9 @@
 #
 
 class User < ActiveRecord::Base
+  include UpdateFullName
   has_secure_password
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name
   validates_uniqueness_of :email
 
   has_many :courses, :dependent => :destroy

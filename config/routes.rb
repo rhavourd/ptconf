@@ -1,15 +1,15 @@
 Ptconf::Application.routes.draw do
 
-  resources :rosters
+  resources :users
+
+  get 'dashboard' => "dashboards#index"
+
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
 
   post "operator/index"
   post "operator/acknowledge"
-
-  resources :parents
-
-  resources :students do
-    resources :relationships
-  end
 
   resources :conference_dates do
     resources :meetings do
@@ -21,21 +21,20 @@ Ptconf::Application.routes.draw do
     end
   end
 
-
-  get 'dashboard' => "dashboards#index"
-
   resources :courses
-
-  get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  delete 'logout', to: 'sessions#destroy', as: 'logout'
+  resources :organizations
+  resources :parents
+  resources :rosters
 
   resources :sessions
+
+  resources :students do
+    resources :relationships
+  end
+
   resources :users
 
   root :to => 'welcome#index'
-
-  resources :organizations
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,11 @@
+<tr class="meeting">
+  <td><%= period.formatted_start_time %></td>
+  <td id="period-<%= period_counter %>" class="<%= period.status.downcase %>"><%= period.status %></td>
+  <td id="period-<%= period_counter %>-btn">
+    <%  if period.is_available? %>
+      <%= mark_personal_button(@conference_date, period, period_counter) %>
+    <% else %>
+      <%= mark_available_button(@conference_date, period, period_counter) %>
+    <% end %>
+  </td>
+</tr>
