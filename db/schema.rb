@@ -11,19 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20120627203945) do
-=======
 ActiveRecord::Schema.define(:version => 20120710133736) do
->>>>>>> jimjones
-=======
-ActiveRecord::Schema.define(:version => 20120710133736) do
->>>>>>> jimjones
-=======
-ActiveRecord::Schema.define(:version => 20120710133736) do
->>>>>>> jimjones
 
   create_table "conference_dates", :force => true do |t|
     t.date     "date"
@@ -61,21 +49,8 @@ ActiveRecord::Schema.define(:version => 20120710133736) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.string   "status",             :limit => 9
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     t.integer  "student_id"
     t.integer  "parent_id"
->>>>>>> jimjones
-=======
-    t.integer  "student_id"
-    t.integer  "parent_id"
->>>>>>> jimjones
-=======
-    t.integer  "student_id"
-    t.integer  "parent_id"
->>>>>>> jimjones
   end
 
   add_index "meetings", ["conference_date_id"], :name => "index_meetings_on_conference_date_id"
