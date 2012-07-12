@@ -13,7 +13,11 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20120627203945) do
+=======
+ActiveRecord::Schema.define(:version => 20120710133736) do
+>>>>>>> jimjones
 =======
 ActiveRecord::Schema.define(:version => 20120710133736) do
 >>>>>>> jimjones
@@ -59,6 +63,11 @@ ActiveRecord::Schema.define(:version => 20120710133736) do
     t.string   "status",             :limit => 9
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    t.integer  "student_id"
+    t.integer  "parent_id"
+>>>>>>> jimjones
 =======
     t.integer  "student_id"
     t.integer  "parent_id"
