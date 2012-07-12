@@ -2,14 +2,14 @@
 #
 # Table name: students
 #
-#  id              :integer         not null, primary key
+#  created_at      :datetime         not null
 #  first_name      :string(255)
-#  last_name       :string(255)
 #  full_name       :string(255)
+#  id              :integer          not null, primary key
+#  last_name       :string(255)
 #  nickname        :string(255)
 #  organization_id :integer
-#  created_at      :datetime        not null
-#  updated_at      :datetime        not null
+#  updated_at      :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

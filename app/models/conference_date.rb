@@ -2,15 +2,15 @@
 #
 # Table name: conference_dates
 #
-#  id         :integer         not null, primary key
+#  created_at :datetime         not null
 #  date       :date
-#  user_id    :integer
-#  start_time :datetime
-#  end_time   :datetime
 #  duration   :integer
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
+#  end_time   :datetime
+#  id         :integer          not null, primary key
 #  reason     :string(255)
+#  start_time :datetime
+#  updated_at :datetime         not null
+#  user_id    :integer
 #
 
 class ConferenceDate < ActiveRecord::Base

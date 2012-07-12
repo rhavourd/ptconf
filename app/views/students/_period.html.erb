@@ -3,9 +3,10 @@
   <td id="period-<%= period_counter %>" class="<%= period.status.downcase %>"><%= period.status %></td>
   <td id="period-<%= period_counter %>-btn">
     <%  if period.is_available? %>
-      <%= mark_personal_button(@conference_date, period, period_counter) %>
+      <%= make_schedule_button(conference_date, period, period_counter, @student) %>
     <% else %>
-      <%= mark_available_button(@conference_date, period, period_counter) %>
+      <%= period.meet_with %>
+      <%= cancel_schedule_button(conference_date, period, period_counter, @student) %>
     <% end %>
   </td>
 </tr>

@@ -14,6 +14,8 @@ Ptconf::Application.routes.draw do
   resources :conference_dates do
     resources :meetings do
       member do
+        post 'make_schedule'
+        post 'cancel_schedule'
         post 'mark_personal'
         post 'mark_available'
         post 'xtoggle'

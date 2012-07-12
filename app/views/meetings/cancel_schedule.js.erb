@@ -1,0 +1,5 @@
+$('#<%= raw(params[:update]) %>').html("<%= @meeting.status.titleize %>");
+$('#<%= raw(params[:update]) %>').removeClass('busy');
+$('#<%= raw(params[:update]) %>').addClass('available');
+$('#<%= raw(params[:update]) + "-btn" %>').html("<%= escape_javascript(make_schedule_button(@meeting.conference_date, @meeting, params[:update], @student_id)) %>");
+$('#<%= raw(params[:update]) %>').effect("highlight", {}, 1500);

@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: relationships
+#
+#  id         :integer          not null, primary key
+#  parent_id  :integer
+#  student_id :integer
+#
+
 class Relationship < ActiveRecord::Base
   belongs_to :parent
   belongs_to :student

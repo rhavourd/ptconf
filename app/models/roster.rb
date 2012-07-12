@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: rosters
+#
+#  course_id  :integer
+#  id         :integer          not null, primary key
+#  student_id :integer
+#
+
 class Roster < ActiveRecord::Base
   belongs_to :student
   belongs_to :course

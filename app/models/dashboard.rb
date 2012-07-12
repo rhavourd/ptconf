@@ -2,9 +2,9 @@
 #
 # Table name: dashboards
 #
-#  id         :integer         not null, primary key
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
+#  created_at :datetime         not null
+#  id         :integer          not null, primary key
+#  updated_at :datetime         not null
 #
 
 class Dashboard < ActiveRecord::Base

@@ -2,6 +2,20 @@
 #
 # Table name: students
 #
+#  created_at      :datetime         not null
+#  first_name      :string(255)
+#  full_name       :string(255)
+#  id              :integer          not null, primary key
+#  last_name       :string(255)
+#  nickname        :string(255)
+#  organization_id :integer
+#  updated_at      :datetime         not null
+#
+
+# == Schema Information
+#
+# Table name: students
+#
 #  id              :integer         not null, primary key
 #  first_name      :string(255)
 #  last_name       :string(255)
@@ -18,6 +32,7 @@ class Student < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :nickname, :relationships_attributes, :parent_id
 
   belongs_to :organization
+  has_many :meetings
   has_many :courses, :through => :rosters
   has_many :rosters, dependent: :destroy
   accepts_nested_attributes_for :rosters,

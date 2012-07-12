@@ -4,6 +4,43 @@ class MeetingsController < ApplicationController
   def index
   end
 
+  def make_schedule
+    start_time = Time.parse(params[:start_time])
+    @meeting = @conference_date.meetings.between_start_end_time(start_time).first
+    if @meeting.nil?
+      @meeting = @conference_date.meetings.build
+      @meeting.start_time = start_time
+      @meeting.end_time = start_time + (@conference_date.duration * 60)
+    end
+
+    @meeting.make_schedule(@student_id, @parent_id)
+    @meeting.save
+
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
+  def cancel_schedule
+    start_time = Time.parse(params[:start_time])
+    @meeting = @conference_date.meetings.between_start_end_time(start_time).first
+    if @meeting.nil?
+      @meeting = @conference_date.meetings.build
+      @meeting.start_time = start_time
+      @meeting.end_time = start_time + (@conference_date.duration * 60)
+    end
+
+    logger.debug "cancel_schedule:: @student_id => #{@student_id}"
+    @meeting.mark_available
+    @meeting.save
+
+    respond_to do |format|
+      format.js
+    end
+
+  end
+
   def mark_personal
     start_time = Time.parse(params[:start_time])
     @meeting = @conference_date.meetings.between_start_end_time(start_time).first
@@ -76,5 +113,11 @@ class MeetingsController < ApplicationController
   private
   def load_conference_date
     @conference_date = current_user.conference_dates.find(params[:conference_date_id])
+    @student_id = params[:student_id]
+    @parent_id = params[:parent_id]
+
+    logger.debug "load_conference_date:: @conference_date => #{@conference_date.inspect}"
+    logger.debug "  @student_id => #{@student_id}"
+    logger.debug "  @parent_id => #{@parent_id}"
   end
 end
