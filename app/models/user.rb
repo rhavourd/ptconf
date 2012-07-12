@@ -2,11 +2,14 @@
 #
 # Table name: users
 #
-#  id              :integer         not null, primary key
+#  created_at      :datetime         not null
 #  email           :string(255)
+#  first_name      :string(255)
+#  full_name       :string(255)
+#  id              :integer          not null, primary key
+#  last_name       :string(255)
 #  password_digest :string(255)
-#  created_at      :datetime        not null
-#  updated_at      :datetime        not null
+#  updated_at      :datetime         not null
 #
 
 class User < ActiveRecord::Base

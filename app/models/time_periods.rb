@@ -59,6 +59,25 @@ class Period
     @meeting_id = 0
   end
 
+  def meet_with
+    val = ""
+    if @meeting_id.present?
+      meeting = Meeting.find(@meeting_id)
+      student = meeting.student
+      parent = meeting.parent
+      val = student.full_name if student.present?
+      val += " (" + parent.full_name + ")"  if parent.present?
+    end
+    val
+  end
+
+  def meeting_is_for_this_student?(student)
+    if @meeting_id.present?
+      meeting = Meeting.find(@meeting_id)
+      meeting.meeting_is_for_this_student?(student)
+    end
+  end
+
   def formatted_start_time
     formatted_time @start_time
   end

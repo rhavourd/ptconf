@@ -2,14 +2,17 @@
 #
 # Table name: parents
 #
-#  id              :integer         not null, primary key
+#  created_at      :datetime         not null
+#  email           :string(255)
 #  first_name      :string(255)
-#  last_name       :string(255)
 #  full_name       :string(255)
+#  id              :integer          not null, primary key
+#  last_name       :string(255)
 #  nickname        :string(255)
 #  organization_id :integer
-#  created_at      :datetime        not null
-#  updated_at      :datetime        not null
+#  phone           :string(255)
+#  phone_has_sms   :boolean
+#  updated_at      :datetime         not null
 #
 
 class Parent < ActiveRecord::Base
@@ -20,6 +23,7 @@ class Parent < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :nickname, :organization_id, :email, :phone, :phone_has_sms
 
   belongs_to :organization
+  has_many :meetings
 
   has_many :students, :through => :relationships
 
