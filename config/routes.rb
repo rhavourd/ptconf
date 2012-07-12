@@ -1,44 +1,11 @@
 Ptconf::Application.routes.draw do
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  resources :users
-
   get 'dashboard' => "dashboards#index"
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
-=======
-  resources :users
-
-  get 'dashboard' => "dashboards#index"
-
-=======
-  resources :users
-
-  get 'dashboard' => "dashboards#index"
-
->>>>>>> jimjones
-=======
-  resources :users
-
-  get 'dashboard' => "dashboards#index"
-
->>>>>>> jimjones
-  get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  delete 'logout', to: 'sessions#destroy', as: 'logout'
-
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> jimjones
-=======
->>>>>>> jimjones
-=======
->>>>>>> jimjones
   post "operator/index"
   post "operator/acknowledge"
 
