@@ -4,14 +4,20 @@
   <td id="period-<%= period_counter %>-btn">
     <%  if period.is_available? %>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <%= mark_personal_button(@conference_date, period, period_counter) %>
     <% else %>
       <%= mark_available_button(@conference_date, period, period_counter) %>
 =======
+=======
+>>>>>>> jimjones
       <%= make_schedule_button(conference_date, period, period_counter, @student) %>
     <% else %>
       <%= period.meet_with %>
       <%= cancel_schedule_button(conference_date, period, period_counter, @student) %>
+<<<<<<< HEAD
+>>>>>>> jimjones
+=======
 >>>>>>> jimjones
     <% end %>
   </td>
