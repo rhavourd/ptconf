@@ -1,51 +1,7 @@
 <tr>
   <td><%= course.code %></td>
   <td><%= course.description %></td>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <td><%= course.first_day %></td>
-  <td><%= course.last_day %></td>
-</tr>
-
-<tr>
-  <td>
-    <div class="span4">
-      <table class="table table-bordered table-condensed">
-        <thead>
-        <tr>
-          <th>Time</th>
-          <th>Status</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% if course.user.conference_date.time_periods.periods %>
-          <%= render :partial => 'period', :collection => course.user.conference_date.time_periods.periods %>
-        <% else %>
-          <tr rowspan="20">
-            <td colspan="2">
-              <i>There are no conference times available to schedule.</i>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-  </td>
-</tr>
-=======
-=======
->>>>>>> jimjones
-=======
->>>>>>> jimjones
   <td><%= course.user.full_name %></td>
   <td><%= course.first_day %></td>
   <td><%= course.last_day %></td>
 </tr>
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> jimjones
-=======
->>>>>>> jimjones
-=======
->>>>>>> jimjones
