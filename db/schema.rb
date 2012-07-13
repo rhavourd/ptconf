@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120710133736) do
+ActiveRecord::Schema.define(:version => 20120713134214) do
 
   create_table "conference_dates", :force => true do |t|
     t.date     "date"
@@ -97,6 +97,15 @@ ActiveRecord::Schema.define(:version => 20120710133736) do
   end
 
   add_index "students", ["organization_id"], :name => "index_students_on_organization_id"
+
+  create_table "teachers", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.boolean  "active_teacher", :default => false
+  end
+
+  add_index "teachers", ["user_id"], :name => "index_teachers_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"
