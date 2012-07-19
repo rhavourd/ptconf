@@ -16,7 +16,6 @@ Ptconf::Application.routes.draw do
         post 'cancel_schedule'
         post 'mark_personal'
         post 'mark_available'
-        post 'xtoggle'
       end
     end
   end

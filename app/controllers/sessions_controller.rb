@@ -5,13 +5,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    puts "params[:email]=#{params[:email]}  user=#{user} "
+    user = User.active.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to_stored_location || redirect_to( dashboard_url, notice: "Logged in!" )
     else
-      flash.now.alert = "Email or password is invalid."
+      redirect_to new_session_url, :alert => "Email or password is invalid."
     end
   end
 
