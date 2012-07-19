@@ -95,12 +95,10 @@ class Period
   end
 
   def mark_available
-    puts "self=#{self.inspect}"
     @status = "available"  unless self.is_available?
   end
 
   def mark_personal
-    puts "self.is_personal? #{self.is_personal?}  self=#{self.inspect}"
     @status = "personal"  unless self.is_personal?
   end
 end

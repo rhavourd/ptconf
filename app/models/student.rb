@@ -2,6 +2,7 @@
 #
 # Table name: students
 #
+#  active_student  :boolean          default(FALSE)
 #  created_at      :datetime         not null
 #  first_name      :string(255)
 #  full_name       :string(255)
@@ -10,20 +11,7 @@
 #  nickname        :string(255)
 #  organization_id :integer
 #  updated_at      :datetime         not null
-#
-
-# == Schema Information
-#
-# Table name: students
-#
-#  id              :integer         not null, primary key
-#  first_name      :string(255)
-#  last_name       :string(255)
-#  full_name       :string(255)
-#  nickname        :string(255)
-#  organization_id :integer
-#  created_at      :datetime        not null
-#  updated_at      :datetime        not null
+#  user_id         :integer
 #
 
 class Student < ActiveRecord::Base
@@ -31,6 +19,7 @@ class Student < ActiveRecord::Base
 
   attr_accessible :first_name, :last_name, :nickname, :relationships_attributes, :parent_id
 
+  belongs_to :user
   belongs_to :organization
   has_many :meetings
   has_many :courses, :through => :rosters
@@ -52,6 +41,14 @@ class Student < ActiveRecord::Base
 
   def label
     full_name
+  end
+
+  def can_login?
+    self.user.present? && self.user.can_login?
+  end
+
+  def active_student!
+    self.active_student = true
   end
 
   def parent?(parent)

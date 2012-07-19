@@ -7,6 +7,7 @@
     <th>Full name</th>
     <th>Nickname</th>
     <th>Organization</th>
+    <th>Can Login?</th>
     <th></th>
   </tr>
 
@@ -17,6 +18,7 @@
     <td><%= student.full_name %></td>
     <td><%= student.nickname %></td>
     <td><%= student.organization %></td>
+    <td><%= student.can_login? %></td>
     <td>
       <%= link_to 'Show', student %>
       <%= link_to 'Edit', edit_student_path(student) %>

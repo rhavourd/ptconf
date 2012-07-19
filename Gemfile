@@ -24,6 +24,8 @@ group :development do
   gem 'awesome_print'
   gem 'sextant' # provide 'rails/routes'
   #gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'thin'
+  gem 'quiet_assets'
 end
 
 group :test do
