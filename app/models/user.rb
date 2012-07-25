@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     self.teacher.present? && self.teacher.active_teacher
   end
 
+  def teacher_id
+    self.teacher.id   if user_is_a_teacher?
+  end
+
   def user_is_a_teacher!
     unless user_is_a_teacher?
       tchr = self.build_teacher
@@ -75,6 +79,10 @@ class User < ActiveRecord::Base
 
   def user_is_a_student?
     self.student.present? && self.student.active_student
+  end
+
+  def student_id
+    self.student.id   if user_is_a_student?
   end
 
   def user_is_a_student!

@@ -20,15 +20,11 @@ class TimePeriods
       if meeting.present?
         period.meeting_id = meeting.id
         period.status = meeting.status
+        period.meeting = meeting
       end
       periods << period
-      puts "init_periods: time=#{time} end_time=#{@conference_date.end_time} count=#{periods.count}"
-      puts "  meeting?=#{meeting.present?} period=#{period.inspect}"
     end while (time += @conference_date.duration * 60) <= @conference_date.end_time
     periods
-  end
-
-  def set_status
   end
 
   def count
@@ -50,6 +46,7 @@ class Period
   attr_reader :duration
   attr_accessor :status
   attr_accessor :meeting_id
+  attr_accessor :meeting
 
   def initialize(start_time, end_time, status)
     @start_time = start_time
@@ -57,14 +54,15 @@ class Period
     @duration = ((@end_time - @start_time) / 60).to_int
     @status = status
     @meeting_id = 0
+    @meeting = nil
   end
 
   def meet_with
     val = ""
     if @meeting_id.present?
-      meeting = Meeting.find(@meeting_id)
-      student = meeting.student
-      parent = meeting.parent
+      @meeting ||= Meeting.find(@meeting_id)
+      student = @meeting.student
+      parent = @meeting.parent
       val = student.full_name if student.present?
       val += " (" + parent.full_name + ")"  if parent.present?
     end
@@ -73,8 +71,8 @@ class Period
 
   def meeting_is_for_this_student?(student)
     if @meeting_id.present?
-      meeting = Meeting.find(@meeting_id)
-      meeting.meeting_is_for_this_student?(student)
+      @meeting ||= Meeting.find(@meeting_id)
+      @meeting.meeting_is_for_this_student?(student)
     end
   end
 
