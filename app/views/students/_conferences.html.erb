@@ -8,8 +8,8 @@
     </tr>
     </thead>
     <tbody>
-    <% if conferences.user.conference_dates.any? %>
-      <% conferences.user.conference_dates.each do |c| %>
+    <% if conferences.teacher.conference_dates.any? %>
+      <% conferences.teacher.conference_dates.each do |c| %>
         <%= render :partial => 'period', :collection => c.time_periods.periods, :locals => {:conference_date => c} %>
       <% end %>
     <% else %>

@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :email
 
-  has_many :courses, :dependent => :destroy
-  has_many :conference_dates, :dependent => :destroy
+  has_many :courses, :through => :teacher
+  has_many :conference_dates, :through => :teacher
 
   has_one :teacher, :dependent => :destroy
   has_one :student, :dependent => :destroy
@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
   end
 
   def user_is_a_teacher!
-    unless user_is_a_teacher?
+    unless self.teacher.present?
       tchr = self.build_teacher
       tchr.active_teacher = true
       tchr.save!
@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
   end
 
   def user_is_a_student!
-    unless user_is_a_student?
+    unless self.student.present?
       std = self.build_student
       std.active_student = true
       std.save!
