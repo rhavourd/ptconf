@@ -14,12 +14,12 @@
 #
 
 class ConferenceDate < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :teacher
   has_many :meetings, :dependent => :destroy
 
   after_update  :set_time_to_conference_date
 
-  validates :user_id, :presence => true
+  validates :teacher_id, :presence => true
   validates :start_time, :presence => true
   validates :end_time, :presence => true
   validates :duration, :numericality => { :only_integer => true, :greater_than => 0,

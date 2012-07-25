@@ -11,20 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20120713160517) do
+=======
+ActiveRecord::Schema.define(:version => 20120725184612) do
+>>>>>>> jimjones
 
   create_table "conference_dates", :force => true do |t|
     t.date     "date"
-    t.integer  "user_id"
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer  "duration"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "reason"
+    t.integer  "teacher_id"
   end
 
-  add_index "conference_dates", ["user_id"], :name => "index_conference_dates_on_user_id"
+  add_index "conference_dates", ["teacher_id"], :name => "index_conference_dates_on_teacher_id"
 
   create_table "courses", :force => true do |t|
     t.string   "code"
@@ -33,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20120713160517) do
     t.date     "last_day"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "user_id"
+    t.integer  "teacher_id"
   end
 
   create_table "dashboards", :force => true do |t|

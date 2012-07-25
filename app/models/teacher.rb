@@ -11,4 +11,13 @@
 
 class Teacher < ActiveRecord::Base
   belongs_to :user
+<<<<<<< HEAD
+=======
+  has_many :courses, :dependent => :destroy
+  has_many :conference_dates, :dependent => :destroy
+
+  def full_name
+    user.full_name  if user.present?
+  end
+>>>>>>> jimjones
 end
