@@ -1,38 +1,52 @@
 <%= simple_form_for @user do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <div class="name-element">
-      <%= f.input :first_name, autofocus: true %>
-      <%= f.input :last_name %>
-      <%= f.input :full_name, :disabled => true %>
+  <div class="form-inputs row">
+    <div class="span3">
+      <fieldset>
+        <legend>Contact Information</legend>
+        <div class="name-element">
+          <%= f.input :first_name, autofocus: true %>
+          <%= f.input :last_name %>
+          <%= f.input :full_name, :disabled => true %>
+        </div>
+        <%= f.input :email %>
+      </fieldset>
     </div>
-    <%= f.input :email %>
-    
-    <fieldset>
-      <legend>Is this user a...</legend>
-      <div class="span3">
-        <%=  f.input :active_user, :as => :radio_buttons %>
-        <ol>
-          <li>@user.active_user? <%= @user.active_user? %></li>
-        </ol>
-      </div>
-      <div class="span3">
-        <%= f.input :user_is_a_teacher?, :as => :radio_buttons %>
-        <ol>
-          <li>@user.user_is_a_teacher? <%= @user.user_is_a_teacher? %></li>
-          <li>@user.teacher.present? <%= @user.teacher.present? %></li>
-        </ol>
-      </div>
-      <div class="span3">
-        <%= f.input :user_is_a_student?, :as => :radio_buttons %>
-        <ol>
-          <li>@user.user_is_a_student? <%= @user.user_is_a_student? %></li>
-          <li>@user.student.present? <%= @user.student.present? %></li>
-        </ol>
-      </div>
-    </fieldset>
 
+    <div class="span3">
+      <fieldset>
+        <legend>Change Login Password</legend>
+        <%= f.input :password %>
+        <%= f.input :password_confirmation %>
+      </fieldset>
+    </div>
+
+    <div class="span3">
+      <fieldset>
+        <legend>Is this user a...</legend>
+        <div class="span3">
+          <%=  f.input :active_user, :as => :radio_buttons %>
+          <ol>
+            <li>@user.active_user? <%= @user.active_user? %></li>
+          </ol>
+        </div>
+        <div class="span3">
+          <%= f.input :user_is_a_teacher?, :as => :radio_buttons %>
+          <ol>
+            <li>@user.user_is_a_teacher? <%= @user.user_is_a_teacher? %></li>
+            <li>@user.teacher.present? <%= @user.teacher.present? %></li>
+          </ol>
+        </div>
+        <div class="span3">
+          <%= f.input :user_is_a_student?, :as => :radio_buttons %>
+          <ol>
+            <li>@user.user_is_a_student? <%= @user.user_is_a_student? %></li>
+            <li>@user.student.present? <%= @user.student.present? %></li>
+          </ol>
+        </div>
+      </fieldset>
+    </div>
   </div>
 
   <div class="form-actions">
