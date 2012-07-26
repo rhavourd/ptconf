@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20120713160517) do
-=======
 ActiveRecord::Schema.define(:version => 20120725184612) do
->>>>>>> jimjones
-=======
-ActiveRecord::Schema.define(:version => 20120725184612) do
->>>>>>> jimjones
 
   create_table "conference_dates", :force => true do |t|
     t.date     "date"
