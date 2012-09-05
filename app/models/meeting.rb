@@ -22,6 +22,8 @@ class Meeting < ActiveRecord::Base
   validates_presence_of :conference_date_id, :start_time, :end_time, :status
 
   scope :between_start_end_time, lambda {|time| puts "\nscope: utc?=#{time.utc?} time=#{time}"; where("start_time <= ? AND end_time > ?", time, time) }
+  scope :meetings_with_a_student, where("student_id IS NOT NULL" )
+
 
 =begin
   def self.between_start_end_time(time)
@@ -34,6 +36,18 @@ class Meeting < ActiveRecord::Base
 
   end
 =end
+
+  def date
+    self.conference_date.date
+  end
+
+  def reason
+    self.conference_date.reason
+  end
+
+  def duration
+    ((end_time - start_time) / 60).to_int
+  end
 
   def meeting_is_for_this_student?(student)
     student_id == (student.respond_to?(:to_i) ? student.to_i : student.id)

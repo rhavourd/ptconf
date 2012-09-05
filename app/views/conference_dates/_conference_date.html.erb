@@ -5,7 +5,9 @@
     <th>End time</th>
     <th>Duration</th>
     <th>Reason</th>
-    <th>Actions</th>
+    <% if current_user.is_a_teacher? %>
+      <th>Actions</th>
+    <% end %>
   </tr>
 
   <% @conference_dates.each do |conference_date| %>
@@ -15,11 +17,14 @@
       <td><%= formatted_time conference_date.end_time %></td>
       <td><%= conference_date.duration %> minutes </td>
       <td><%= conference_date.reason %></td>
+
+      <% if current_user.is_a_teacher?  %>
       <td>
         <%= link_to 'Show', conference_date %>
         <%= link_to 'Edit', edit_conference_date_path(conference_date) %>
         <%= link_to 'Destroy', conference_date, confirm: 'Are you sure?', method: :delete %>
       </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

@@ -1,4 +1,4 @@
-<h2 style="display: inline-block">My Conferences</h2>
-<%= link_to 'New Conference Date', new_conference_date_path, :class => 'btn btn-primary', :style => 'float:right;' %>
+<h2 style="display: inline-block">My Conference Days</h2>
+<%= link_to 'New Conference Date', new_conference_date_path, :class => 'btn btn-primary', :style => 'float:right;'  if current_user.is_a_teacher? %>
 
-<%= render :partial => "conference_dates/conference_date" %>
+<%= render :partial => "conference_dates/conference_date" if @conference_dates %>

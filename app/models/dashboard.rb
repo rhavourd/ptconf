@@ -8,4 +8,8 @@
 #
 
 class Dashboard < ActiveRecord::Base
+  def initialize(user = User.new)
+    @user = user
+
+  end
 end

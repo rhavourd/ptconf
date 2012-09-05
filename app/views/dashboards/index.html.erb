@@ -1,4 +1,4 @@
-<h1> <%= @current_user.email %> Dashboards#index</h1>
+<h1> <%= @current_user.full_name %> Dashboard</h1>
 <p>Find me in app/views/dashboards/index.html.erb</p>
 
 <ul>
@@ -9,3 +9,4 @@
 <%= render :partial => 'courses/mycourses', :object => @courses %>
 
 <%= render :partial => 'conference_dates/myconferences'  %>
+<%= render :partial => 'meetings/mymeetings' %>

@@ -29,6 +29,41 @@ class User < ActiveRecord::Base
 
   scope :active, where(:active_user => true)
 
+  def courses_list
+    if user_is_a_teacher?
+      teacher.courses
+    else
+      if user_is_a_student?
+        student.courses
+      else
+        []
+      end
+    end
+  end
+
+  def conference_dates_list
+    cd = []
+    if user_is_a_teacher?
+      teacher.conference_dates
+    else
+      student.conference_dates
+      #if user_is_a_student?
+      #  c = student.courses.all.each do |crs|
+      #    cd << crs.teacher.conference_dates
+      #  end
+      #end
+    end
+    #cd.flatten
+  end
+
+  def meetings
+    if user_is_a_teacher?
+      teacher.meetings_with_a_student
+    else
+      student.meetings
+    end
+  end
+
   def active_user?
     self.active_user
   end
@@ -48,6 +83,7 @@ class User < ActiveRecord::Base
   def user_is_a_teacher?
     self.teacher.present? && self.teacher.active_teacher
   end
+  alias_method :is_a_teacher?, :user_is_a_teacher?
 
   def teacher_id
     self.teacher.id   if user_is_a_teacher?
@@ -80,6 +116,7 @@ class User < ActiveRecord::Base
   def user_is_a_student?
     self.student.present? && self.student.active_student
   end
+  alias_method :is_a_student?, :user_is_a_student?
 
   def student_id
     self.student.id   if user_is_a_student?

@@ -1,0 +1,30 @@
+<h2 style="display: inline-block">My Meetings</h2>
+
+<table class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th>Date</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Duration</th>
+    <th>Reason</th>
+    <th>Actions</th>
+  </tr>
+
+
+  <% @meetings.each do |meeting| %>
+  <%# render :partial => "meetings/meeting" %>
+    <tr>
+      <td><%= formatted_date meeting.date %></td>
+      <td><%= formatted_time meeting.start_time %></td>
+      <td><%= formatted_time meeting.end_time %></td>
+      <td><%= meeting.duration %> minutes </td>
+      <td><%= meeting.reason %></td>
+
+      <td>
+        <%# link_to 'Destroy', meeting, confirm: 'Are you sure?', method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>
+

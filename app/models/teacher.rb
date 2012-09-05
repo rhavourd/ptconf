@@ -13,6 +13,11 @@ class Teacher < ActiveRecord::Base
   belongs_to :user
   has_many :courses, :dependent => :destroy
   has_many :conference_dates, :dependent => :destroy
+  has_many :meetings, :through => :conference_dates
+
+  has_many :meetings_with_a_student, :class_name => "Meeting",
+      :through => :conference_dates, :source => :meetings,
+      :conditions => "student_id IS NOT NULL"
 
   def full_name
     user.full_name  if user.present?

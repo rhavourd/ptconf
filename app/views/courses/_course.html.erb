@@ -3,8 +3,10 @@
     <td><%= link_to course.description, course_path(course) %></td>
     <td><%= course.first_day %></td>
     <td><%= course.last_day %></td>
+    <% if current_user.is_a_teacher?  %>
     <td>
       <%= link_to 'Edit', edit_course_path(course), :class => 'btn btn-mini' %>
       <%= link_to content_tag("i", "", :class => "icon-remove"), course, confirm: 'Are you sure?', :method => :delete, :class => 'btn btn-mini btn-danger' %>
     </td>
+     <% end %>
   </tr>

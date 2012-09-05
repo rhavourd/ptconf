@@ -22,18 +22,22 @@ class Student < ActiveRecord::Base
   belongs_to :user
   belongs_to :organization
   has_many :meetings
+  has_many :conference_dates, :through => :meetings
   has_many :courses, :through => :rosters
   has_many :rosters, dependent: :destroy
   accepts_nested_attributes_for :rosters,
                                 :allow_destroy => true,
                                 :reject_if => proc {|attrs| attrs['course_id'].blank?}
 
-
   has_many :parents, :through => :relationships
   has_many :relationships, dependent: :destroy
   accepts_nested_attributes_for :relationships,
                                 :allow_destroy => true,
                                 :reject_if => proc {|attrs| attrs['parent_id'].blank?}
+
+  def conference_dates_list
+    self.meetings.all
+  end
 
   def name
     full_name
